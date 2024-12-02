@@ -5,7 +5,7 @@ const {
   loginValidation,
   validator,
 } = require("../middlewares/validator");
-const isAuth = require("../middlewares/auth");
+const isAuth = require("../middlewares/isAuth");
 
 const router = express.Router();
 
@@ -19,10 +19,8 @@ router.post("/register", registerValidation(), validator, register);
 router.post("/login", loginValidation(), validator, login);
 
 // Protected route example
-router.get("/profile", isAuth, (req, res) => {
-  res
-    .status(200)
-    .send({ message: `Welcome, ${req.user.firstName}!`, user: req.user });
+router.get("/current", isAuth, (req, res) => {
+  res.send(req.user);
 });
 
 module.exports = router;
