@@ -96,3 +96,19 @@ exports.getMyProducts = async (req, res) => {
     res.status(500).send(error);
   }
 };
+
+// add product to cart by id
+exports.addToCart = async (req, res) => {
+  try {
+
+    const { id } = req.params;
+
+    const foundProduct = await Product.findById(id);
+
+    await req.user.cart.push(foundProduct);
+    console.log(req.user.cart)
+    res.status(201).send({ msg: "Product added successfully", cart });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+};

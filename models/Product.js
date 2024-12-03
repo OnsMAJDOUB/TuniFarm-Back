@@ -10,7 +10,7 @@ const productSchema = new mongoose.Schema(
     method: { type: String, enum: ["organic", "conventional"], required: true },
     region: { type: String },
     addedBy: {
-      type: Schema.Types.ObjectId,
+      type:  mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
     image: { type: String },

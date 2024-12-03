@@ -26,6 +26,10 @@ const userSchema = new Schema(
       type: Boolean,
       default: false,
     },
+    cart : {
+      type: Array,
+      default: []
+    }
   },
   { timestamps: true },
   { collection: "users" }

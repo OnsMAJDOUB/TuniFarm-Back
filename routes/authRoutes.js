@@ -16,7 +16,7 @@ router.get("/test", test);
 router.post("/register", registerValidation(), validator, register);
 
 // Login route with validation
-router.post("/login", loginValidation(), validator, login);
+router.post("/login", login);
 
 // Protected route example
 router.get("/current", isAuth, (req, res) => {
