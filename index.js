@@ -6,7 +6,7 @@ app.use(express.json());
 
 require("dotenv").config();
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 7000;
 
 app.listen(PORT, (error) => {
   error
@@ -17,6 +17,9 @@ app.listen(PORT, (error) => {
 const connectDB = require("./config/connectDB");
 
 connectDB();
+app.use((req,res)=>{
+  res.send("API is running")
+})
 
 app.get("/", (req, res) => {
   res.send("Hello World");
